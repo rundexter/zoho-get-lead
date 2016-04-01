@@ -17,7 +17,7 @@ module.exports = {
           , api_key  = step.input('api_key').first()
           , searches = step.inputObject({'searchColumn':'search_column','searchValue':'search_value'})
           , baseUrl  = 'https://crm.zoho.com/crm/private/xml/Leads/'
-          , columns  = step.input('select_columns').first()
+          , columns  = step.input('select_columns', [[]]).first()
           , base     = {
                             authtoken: api_key
                             , scope: 'crmapi'
