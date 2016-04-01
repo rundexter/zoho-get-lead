@@ -1,0 +1,19 @@
+{
+  "name"        : "zoho-get-lead",
+  "version"     : "0.0.1",
+  "description" : "Find a Zoho lead by a field or Id",
+  "main"        : "index.js",
+  "author"      : "Run Dexter, Inc.",
+  "license"     : "MIT",
+  "private"     : true,
+  "dependencies": {
+    "lodash"     : "^4",
+    "q"          : "^1.4.1",
+    "superagent" : "^1.8.2",
+    "xml2js"     : "^0.4.16"
+  }, 
+  "repository":{
+    "type":"git",
+    "url":"https://github.com/rundexter/zoho-get-lead"
+  }
+}

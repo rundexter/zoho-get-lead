@@ -1,0 +1,21 @@
+{
+    "inputs": [{
+        "id": "select_columns",
+        "title":"Select Columns",
+        "description": "A Javascript array of Zoho field names to return"
+    }, {
+        "id": "search_column",
+        "title":"Search column",
+        "description": "Which column to search on (email or id)"
+    }, {
+        "id": "search_value",
+        "title":"Search value",
+        "description": "The value to search for (email address or contact id)"
+    }],
+    "outputs": [{
+        "id"    : "lead",
+        "title" : "Lead"
+    }],
+    "icon": "user",
+    "title": "Zoho Get Lead"
+}
