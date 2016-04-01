@@ -1,5 +1,9 @@
 {
     "inputs": [{
+        "id": "api_key",
+        "title":"API Key",
+        "description": "A valid Zoho API Key"
+    }, {
         "id": "select_columns",
         "title":"Select Columns",
         "description": "A Javascript array of Zoho field names to return"
