@@ -91,16 +91,20 @@ module.exports = {
                       //normalize
                       if(!_.isArray(leads)) leads = [leads];
 
+                      //map each xml node to an array of JSON objects
+                      //that represent the result set
                       return _.map(leads, function(lead) {
                           var item = lead.FL;
                           if(!_.isArray(item)) item = [ item ];
 
-                          return _.reduce(item
-                            , function(final, i) {
-                                var key = _.get(i, '$.val');
-                                final[ key.match(/leadid/i) ? 'id' : key ] = i._;
-                                return final;
-                            }, {});
+                          return {
+                              lead: _.reduce(item
+                                    , function(final, i) {
+                                        var key = _.get(i, '$.val');
+                                        final[ key.match(/leadid/i) ? 'id' : key ] = i._;
+                                        return final;
+                                    }, {})
+                          };
                       });
                   });
     }
