@@ -35,11 +35,18 @@ module.exports = {
 
         q.all(searches.map(function(search) {
              var deferred = q.defer()
-               , data     = _.extend(search, base)
-               , command  = search.searchColumn.match(/^id$/i) 
+               , byId     = !!search.searchColumn.match(/^id$/i) 
+               , command  = byId
                               ? 'getRecordById'  
-                              : 'getSearchRecordsByPDC' 
+                              : 'searchRecords' 
+               , data     = _.extend({}, base)
              ;
+
+             if(byId) {
+                 data.id = search.searchValue;
+             } else {
+                 data.criteria = ['(',search.searchColumn,':',search.searchValue,')'].join('');
+             }
 
              agent.get(baseUrl+command)
                .query(data)
@@ -78,6 +85,8 @@ module.exports = {
         return deferred.promise
                   .then(function(data) {
                       var leads = _.get(data, 'response.result.Leads.row');
+
+                      if(!leads) return null;
 
                       //normalize
                       if(!_.isArray(leads)) leads = [leads];
